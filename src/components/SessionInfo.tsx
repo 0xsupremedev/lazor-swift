@@ -3,6 +3,7 @@
 import { useWallet } from '@lazorkit/wallet';
 import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
 import { useEffect, useState, useCallback } from 'react';
+import { ThemeToggle } from './ThemeToggle';
 
 export function SessionInfo() {
     const { smartWalletPubkey, isConnected } = useWallet();
@@ -101,6 +102,9 @@ export function SessionInfo() {
                         airdropStatus === 'success' ? 'Success!' :
                             airdropStatus === 'error' ? 'Failed' : 'Get Devnet SOL'}
                 </button>
+
+                <div className="h-8 w-px bg-gray-200 dark:bg-zinc-700 mx-2 hidden md:block"></div>
+                <ThemeToggle />
             </div>
         </div>
     );
