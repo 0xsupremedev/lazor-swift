@@ -46,26 +46,26 @@ Built for the **LazorKit Bounty**, LazorSwift demonstrates a premium, high-conve
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
-### 🔐 Zero-Friction Auth
+### Zero-Friction Auth
 - **Hardware-Bound Passkeys**: Securely login with FaceID, TouchID, or Windows Hello.
 - **Non-Custodial**: Keys never leave the user's Secure Enclave.
 - **No Seed Phrases**: Eliminates the comprehensive risk of phishing and loss.
 
-### 💸 Gasless & Atomic
+### Gasless & Atomic
 - **Sponsored Transactions**: integrated Paymaster automatically sponsors SOL fees.
 - **Batch Transfers**: Send to multiple recipients in a single, atomic transaction.
 - **USDC Support**: Native support for SPL tokens and "Pay with Token" flows.
 
-### 🛠 Developer Ready
+### Developer Ready
 - **Embeddable Widget**: A "Pay with Lazor" component ready for any React app.
 - **Real-time QR**: Dynamic QR code generation for instant wallet sharing.
 - **Unified Config**: Centralized environment management for easy switching between Devnet/Mainnet.
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 LazorSwift leverages **Account Abstraction** to decouple the signer (Passkey) from the account (Smart Wallet).
 
@@ -96,7 +96,7 @@ sequenceDiagram
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router, Turbopack)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/)
@@ -107,7 +107,7 @@ sequenceDiagram
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 1. **Clone & Install**
    ```bash
@@ -129,7 +129,7 @@ sequenceDiagram
 
 ---
 
-## 🧩 Components
+## Components
 
 | Component | Description |
 |-----------|-------------|
@@ -142,6 +142,6 @@ sequenceDiagram
 
 ---
 
-## 📄 License
+## License
 
 MIT © [0xsupremedev](https://github.com/0xsupremedev)
