@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from 'sonner';
 import "./globals.css";
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "LazorSwift",
     images: [
       {
-        url: "/og-image.png", // We'll need to ensure this exists or use a generic one
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "LazorSwift Demo",
@@ -43,13 +43,14 @@ export const metadata: Metadata = {
     description: "Onboard instantly with Passkeys. Send SOL/USDC without gas fees.",
     images: ["/og-image.png"],
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false, // Prevents zooming on inputs for "native app" feel
-  },
-  themeColor: "#6366f1", // Indigo-500
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#6366f1",
 };
 
 export default function RootLayout({
