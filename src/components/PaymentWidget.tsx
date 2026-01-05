@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useWallet } from '@lazorkit/wallet';
 import { SystemProgram, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { toast } from 'sonner';
 
 interface PaymentWidgetProps {
     recipient: string;
@@ -35,10 +36,14 @@ export function PaymentWidget({ recipient, defaultAmount = 0.05, title = "Pay wi
                 transactionOptions: { feeToken: 'USDC' }
             });
 
-            alert('Payment Successful!');
+            toast.success('Payment Successful', {
+                description: `Sent ${defaultAmount} SOL to ${recipient.slice(0, 4)}...${recipient.slice(-4)}`
+            });
         } catch (e) {
             console.error(e);
-            alert('Payment Failed');
+            toast.error('Payment Failed', {
+                description: e instanceof Error ? e.message : 'Unknown error'
+            });
         } finally {
             setLoading(false);
         }

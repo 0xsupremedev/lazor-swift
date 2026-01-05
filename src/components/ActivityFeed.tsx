@@ -3,6 +3,7 @@
 import { useWallet } from '@lazorkit/wallet';
 import { useEffect, useState, useCallback } from 'react';
 import { ExternalLink, ArrowUpRight, Clock } from 'lucide-react';
+import { CONFIG } from '../utils/config';
 
 interface Transaction {
     signature: string;
@@ -21,7 +22,7 @@ export function ActivityFeed() {
 
         try {
             setLoading(true);
-            const response = await fetch('https://api.devnet.solana.com', {
+            const response = await fetch(CONFIG.RPC_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

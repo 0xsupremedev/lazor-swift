@@ -4,8 +4,10 @@ import { ReactNode, useEffect, useState } from 'react';
 import { LazorkitProvider } from '@lazorkit/wallet';
 
 // Polyfill Buffer for Next.js
+import { Buffer } from 'buffer';
+
 if (typeof window !== 'undefined') {
-    window.Buffer = window.Buffer || require('buffer').Buffer;
+    window.Buffer = window.Buffer || Buffer;
 }
 
 const CONFIG = {

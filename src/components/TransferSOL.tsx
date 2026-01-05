@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useWallet } from '@lazorkit/wallet';
 import { SystemProgram, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { toast } from 'sonner';
 
 export function TransferSOL() {
     const { signAndSendTransaction, smartWalletPubkey } = useWallet();
@@ -36,9 +37,19 @@ export function TransferSOL() {
             console.log('Transaction confirmed:', signature);
             setTxHash(signature);
             setStatus('success');
+            toast.success('Transfer Successful', {
+                description: `Sent ${amount} SOL gasless!`,
+                action: {
+                    label: 'View Explorer',
+                    onClick: () => window.open(`https://explorer.solana.com/tx/${signature}?cluster=devnet`, '_blank')
+                }
+            });
         } catch (error) {
             console.error('Transfer failed:', error);
             setStatus('error');
+            toast.error('Transfer Failed', {
+                description: error instanceof Error ? error.message : 'Unknown error occurred'
+            });
         }
     };
 

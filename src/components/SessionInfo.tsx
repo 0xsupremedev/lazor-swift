@@ -64,7 +64,7 @@ export function SessionInfo() {
             } else {
                 setAirdropStatus('error');
             }
-        } catch (e) {
+        } catch {
             setAirdropStatus('error');
         }
     };

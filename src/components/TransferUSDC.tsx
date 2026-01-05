@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useWallet } from '@lazorkit/wallet';
 import { PublicKey } from '@solana/web3.js';
 import * as splToken from '@solana/spl-token';
+import { toast } from 'sonner';
 
 // USDC Devnet Mint Address
 const USDC_MINT = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
@@ -74,7 +75,14 @@ export function TransferUSDC() {
             console.error('Transfer failed:', error);
             // Provide more descriptive error if it's likely a missing ATA
             if (error instanceof Error && (error.message.includes('AccountNotFound') || error.message.includes('0x1'))) {
-                alert('Transfer failed: Recipient might not have a USDC account. This demo requires the recipient to have an existing USDC ATA.');
+                toast.error('Recipient Missing USDC Account', {
+                    description: 'The recipient address does not have a USDC Associated Token Account (ATA).',
+                    duration: 5000
+                });
+            } else {
+                toast.error('Transfer Failed', {
+                    description: error instanceof Error ? error.message : 'Unknown error'
+                });
             }
             setStatus('error');
         }
