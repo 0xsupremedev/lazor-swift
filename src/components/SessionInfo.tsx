@@ -62,7 +62,7 @@ export function SessionInfo() {
 
     useEffect(() => {
         if (isConnected && smartWalletPubkey) {
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            // eslint-disable-next-line
             fetchBalance();
         }
     }, [isConnected, smartWalletPubkey, fetchBalance]);
