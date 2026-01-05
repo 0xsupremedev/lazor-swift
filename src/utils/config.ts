@@ -1,6 +1,6 @@
 export const CONFIG = {
     // Solana RPC
-    RPC_URL: process.env.NEXT_PUBLIC_RPC_URL || 'https://rpc.ankr.com/solana_devnet',
+    RPC_URL: process.env.NEXT_PUBLIC_RPC_URL || 'https://api.devnet.solana.com',
 
     // LazorKit Config
     PORTAL_URL: "https://portal.lazor.sh",
