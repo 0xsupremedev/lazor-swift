@@ -1,6 +1,35 @@
 ![LazorSwift Banner](/public/og-image.png)
 
-# ⚡ LazorSwift
+# LazorSwift
+
+// ... 
+
+## Key Features
+
+// ... 
+
+### Zero-Friction Auth
+
+// ... 
+
+### Gasless & Atomic
+
+// ... 
+
+### Developer Ready
+
+// ... 
+
+## Architecture
+
+// ... 
+
+## Tech Stack
+
+// ... 
+
+## Quick Start
+
 
 > **Onboard users instantly. Pay zero gas. Built with LazorKit.**
 

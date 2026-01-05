@@ -10,6 +10,7 @@ import { SecuritySection } from '@/components/SecuritySection';
 import { ActivityFeed } from '@/components/ActivityFeed';
 import { RequestPayment } from '@/components/RequestPayment';
 import { BatchTransfer } from '@/components/BatchTransfer';
+import { Zap } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <nav className="border-b border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-black/50 backdrop-blur-md sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">⚡</span>
+              <Zap className="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="currentColor" />
               <span className="font-bold text-xl tracking-tight">LazorSwift</span>
             </div>
             <ConnectWallet />
@@ -139,7 +140,7 @@ export default function Home() {
         <footer className="py-20 border-t border-gray-100 dark:border-zinc-900 text-center">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-center gap-2 mb-6">
-              <span className="text-2xl">⚡</span>
+              <Zap className="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="currentColor" />
               <span className="font-bold text-xl tracking-tight">LazorSwift</span>
             </div>
             <p className="text-gray-500 text-sm">Built for the LazorKit Bounty by 0xsupremedev</p>
