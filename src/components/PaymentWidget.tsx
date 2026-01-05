@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useWallet } from '@lazorkit/wallet';
 import { SystemProgram, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { toast } from 'sonner';
+import { Zap } from 'lucide-react';
 
 interface PaymentWidgetProps {
     recipient: string;
@@ -55,8 +56,8 @@ export function PaymentWidget({ recipient, defaultAmount = 0.05, title = "Pay wi
         <div className="w-full max-w-sm space-y-4">
             <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-1 rounded-3xl shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
                 <div className="bg-white dark:bg-black rounded-[22px] p-8 text-center h-full flex flex-col items-center justify-center">
-                    <div className="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-inner">
-                        ⚡
+                    <div className="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-inner text-indigo-600 dark:text-indigo-400">
+                        <Zap size={32} fill="currentColor" />
                     </div>
                     <h4 className="font-bold text-2xl mb-2">{title}</h4>
                     <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
