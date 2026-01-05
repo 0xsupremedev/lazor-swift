@@ -1,6 +1,6 @@
 ![LazorSwift Banner](/public/og-image.png)
 
-# ⚡ LazorSwift
+# LazorSwift
 
 > **Onboard users instantly. Pay zero gas. Built with LazorKit.**
 
@@ -11,22 +11,22 @@
 
 Built for the **LazorKit Bounty**, this project demonstrates a premium, high-conversion onboarding flow using biometric authentication and gasless transactions.
 
-## 🚀 Key Features
+## Key Features
 
-- **🔑 Seedless Onboarding**: Securely login with FaceID, TouchID, or Windows Hello.
-- **⛽ Gasless Transfers**: Full sponsorship for SOL and token transactions.
-- **👛 Smart Accounts**: PDA-based accounts controlled by local Passkeys.
-- **💸 USDC Gas Payments**: Option to pay gas fees in USDC (Pay-with-Token).
-- **🧩 Embeddable Widget**: A ready-to-use "Pay with Lazor" component for any React app.
+- **Seedless Onboarding**: Securely login with FaceID, TouchID, or Windows Hello.
+- **Gasless Transfers**: Full sponsorship for SOL and token transactions.
+- **Smart Accounts**: PDA-based accounts controlled by local Passkeys.
+- **USDC Gas Payments**: Option to pay gas fees in USDC (Pay-with-Token).
+- **Embeddable Widget**: A ready-to-use "Pay with Lazor" component for any React app.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: [Next.js 14/15](https://nextjs.org/) (App Router)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Wallet**: [@lazorkit/wallet](https://docs.lazorkit.com/)
 - **Blockchain**: Solana (Devnet)
 
-## 🏁 Quick Start
+## Quick Start
 
 1. **Clone & Install**
    ```bash
@@ -46,7 +46,7 @@ Built for the **LazorKit Bounty**, this project demonstrates a premium, high-con
    - Send gasless SOL and USDC transfers.
    - Explore the embeddable payment widget.
 
-## 📦 Components
+## Components
 
 ### `<ConnectWallet />`
 Ready-to-use button handling the entire Passkey registration/login flow.
@@ -60,8 +60,8 @@ Premium, customizable payment card with built-in code snippet generator for deve
 ### `<TransferSOL />` / `<TransferUSDC />`
 Transactional components showcasing complex instruction signing and gas sponsorship.
 
-## 🤝 Submission
+## Submission
 This project is a submission for the **LazorKit SDK Bounty**. It focuses on demonstrating the SDK's power in a production-ready, aesthetically pleasing interface.
 
-## 📄 License
+## License
 MIT
