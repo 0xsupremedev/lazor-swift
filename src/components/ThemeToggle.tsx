@@ -11,6 +11,7 @@ export function ThemeToggle() {
         const savedTheme = localStorage.getItem('theme');
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
             setIsDark(true);
             document.documentElement.classList.add('dark');

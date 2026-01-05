@@ -3,6 +3,7 @@
 import { useWallet } from '@lazorkit/wallet';
 import { useState } from 'react';
 import { Copy, Check, QrCode, Share2 } from 'lucide-react';
+import QRCode from 'react-qr-code';
 
 export function RequestPayment() {
     const { smartWalletPubkey, isConnected } = useWallet();
@@ -11,7 +12,6 @@ export function RequestPayment() {
     if (!isConnected || !smartWalletPubkey) return null;
 
     const address = smartWalletPubkey.toBase58();
-    const shareUrl = `https://explorer.solana.com/address/${address}?cluster=devnet`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(address);
@@ -30,16 +30,14 @@ export function RequestPayment() {
                     Share your Smart Account address to receive SOL or tokens on Devnet.
                 </p>
 
-                {/* Simulated QR Code Area */}
-                <div className="w-48 h-48 bg-zinc-50 dark:bg-black rounded-3xl border-4 border-zinc-100 dark:border-zinc-800 flex items-center justify-center mb-8 relative group">
-                    <div className="w-40 h-40 bg-white grid grid-cols-4 grid-rows-4 gap-1 p-2 opacity-80 group-hover:opacity-100 transition-opacity">
-                        {Array.from({ length: 16 }).map((_x, i) => (
-                            <div key={i} className={`rounded-sm ${Math.random() > 0.4 ? 'bg-black' : 'bg-transparent'}`}></div>
-                        ))}
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center bg-white/40 dark:bg-black/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl">
-                        <span className="text-xs font-bold text-black dark:text-white uppercase tracking-tighter bg-white dark:bg-black px-3 py-1 rounded-full shadow-lg border border-zinc-200 dark:border-zinc-700">Scan to Pay</span>
-                    </div>
+                {/* Real QR Code Area */}
+                <div className="p-4 bg-white rounded-2xl shadow-sm border border-zinc-100 mb-8">
+                    <QRCode
+                        value={address}
+                        size={160}
+                        viewBox={`0 0 256 256`}
+                        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                    />
                 </div>
 
                 <div className="w-full space-y-4">

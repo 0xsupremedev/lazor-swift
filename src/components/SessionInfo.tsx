@@ -4,17 +4,20 @@ import { useWallet } from '@lazorkit/wallet';
 import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
 import { useEffect, useState, useCallback } from 'react';
 import { ThemeToggle } from './ThemeToggle';
+import { CONFIG } from '@/utils/config';
+import { getAssociatedTokenAddress } from '@solana/spl-token';
 
 export function SessionInfo() {
     const { smartWalletPubkey, isConnected } = useWallet();
     const [balance, setBalance] = useState<number | null>(null);
-    const [loading, setLoading] = useState(false);
+    const [usdcBalance, setUsdcBalance] = useState<number | null>(null);
     const [airdropStatus, setAirdropStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
     const fetchBalance = useCallback(async () => {
         if (!smartWalletPubkey) return;
         try {
-            const response = await fetch('https://api.devnet.solana.com', {
+            // Fetch SOL Balance
+            const response = await fetch(CONFIG.RPC_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -28,8 +31,32 @@ export function SessionInfo() {
             if (data.result) {
                 setBalance(data.result.value / LAMPORTS_PER_SOL);
             }
+
+            // Fetch USDC Balance
+            // Note: In a real app, use a dedicated RPC provider or Connection object
+            // Here we use a direct RPC call for getTokenAccountBalance
+            const usdcMint = new PublicKey(CONFIG.USDC_MINT);
+            const ata = await getAssociatedTokenAddress(usdcMint, smartWalletPubkey, true);
+
+            const tokenResponse = await fetch(CONFIG.RPC_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    jsonrpc: '2.0',
+                    id: 2,
+                    method: 'getTokenAccountBalance',
+                    params: [ata.toBase58()]
+                })
+            });
+            const tokenData = await tokenResponse.json();
+            if (tokenData.result) {
+                setUsdcBalance(tokenData.result.value.uiAmount);
+            } else {
+                setUsdcBalance(0); // Likely no ATA exists yet
+            }
+
         } catch (e) {
-            console.error('Failed to fetch balance', e);
+            console.error('Failed to fetch balances', e);
         }
     }, [smartWalletPubkey]);
 
@@ -44,7 +71,7 @@ export function SessionInfo() {
         if (!smartWalletPubkey) return;
         try {
             setAirdropStatus('loading');
-            const response = await fetch('https://api.devnet.solana.com', {
+            const response = await fetch(CONFIG.RPC_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -86,11 +113,16 @@ export function SessionInfo() {
             </div>
 
             <div className="flex items-center gap-6">
-                <div className="text-right">
-                    <p className="text-xs text-gray-500 uppercase tracking-wider">Balance</p>
-                    <p className="text-lg font-bold">
-                        {balance !== null ? `${balance.toFixed(3)} SOL` : '---'}
-                    </p>
+                {/* Stacked Balances */}
+                <div className="text-right flex flex-col items-end">
+                    <div>
+                        <span className="text-xs text-gray-500 uppercase tracking-wider mr-2">SOL</span>
+                        <span className="text-lg font-bold">{balance !== null ? balance.toFixed(3) : '---'}</span>
+                    </div>
+                    <div>
+                        <span className="text-xs text-gray-500 uppercase tracking-wider mr-2">USDC</span>
+                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">{usdcBalance !== null ? usdcBalance.toFixed(2) : '---'}</span>
+                    </div>
                 </div>
 
                 <button

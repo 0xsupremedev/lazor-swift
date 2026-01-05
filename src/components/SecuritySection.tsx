@@ -1,6 +1,6 @@
 'use client';
 
-import { ShieldCheck, Fingerprint, Lock, Zap, ShieldAlert, Key } from 'lucide-react';
+import { Fingerprint, Lock, ShieldCheck } from 'lucide-react';
 
 export function SecuritySection() {
     return (

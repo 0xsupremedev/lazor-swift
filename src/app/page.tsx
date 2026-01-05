@@ -9,6 +9,7 @@ import { SessionInfo } from '@/components/SessionInfo';
 import { SecuritySection } from '@/components/SecuritySection';
 import { ActivityFeed } from '@/components/ActivityFeed';
 import { RequestPayment } from '@/components/RequestPayment';
+import { BatchTransfer } from '@/components/BatchTransfer';
 
 export default function Home() {
   return (
@@ -75,7 +76,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Security Section (New in Phase 2) */}
+        {/* Security Section (Phase 2) */}
         <SecuritySection />
 
         {/* Demo Section */}
@@ -101,11 +102,12 @@ export default function Home() {
                     <div className="grid grid-cols-1 gap-8">
                       <TransferSOL />
                       <TransferUSDC />
+                      <BatchTransfer />
                     </div>
                   </div>
                 </div>
 
-                {/* Activity Feed (New in Phase 2) */}
+                {/* Activity Feed */}
                 <ActivityFeed />
               </div>
 
@@ -123,7 +125,7 @@ export default function Home() {
                     <PaymentWidget recipient="LazorSwiftDemoAddress123" />
                   </div>
 
-                  {/* Request Payment Utility (New in Phase 2) */}
+                  {/* Request Payment Utility */}
                   <div className="pt-8 border-t border-gray-200 dark:border-zinc-800">
                     <RequestPayment />
                   </div>
