@@ -1,4 +1,5 @@
-![LazorSwift Banner](/public/og-image.png)
+
+<img width="1024" height="558" alt="og-image" src="https://github.com/user-attachments/assets/5ec9dda8-59a2-4cf8-9176-63da30ccb3a5" />
 
 # LazorSwift
 
@@ -12,6 +13,7 @@
 **The fastest way to build Passkey-native Solana apps.**
 
 Built for the **LazorKit Bounty**, LazorSwift demonstrates a premium, high-conversion onboarding flow using biometric authentication and gasless transactions. It abstracts away seed phrases, private keys, and gas fees, delivering a Web2-like experience on Web3 rails.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a5f8e952-0bfe-44e0-a970-0699b2373a04" />
 
 ---
 
