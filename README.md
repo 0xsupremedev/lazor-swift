@@ -2,37 +2,6 @@
 
 # LazorSwift
 
-// ... 
-
-## Key Features
-
-// ... 
-
-### Zero-Friction Auth
-
-// ... 
-
-### Gasless & Atomic
-
-// ... 
-
-### Developer Ready
-
-// ... 
-
-## Architecture
-
-// ... 
-
-## Tech Stack
-
-// ... 
-
-## Quick Start
-
-
-> **Onboard users instantly. Pay zero gas. Built with LazorKit.**
-
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F0xsupremedev%2Flazor-swift)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
@@ -109,23 +78,57 @@ sequenceDiagram
 
 ## Quick Start
 
-1. **Clone & Install**
-   ```bash
-   git clone https://github.com/0xsupremedev/lazor-swift.git
-   cd lazor-swift
-   npm install
-   ```
+### 1. Clone & Install
 
-2. **Run Dev Server**
-   ```bash
-   npm run dev
-   ```
+```bash
+git clone https://github.com/0xsupremedev/lazor-swift.git
+cd lazor-swift
+npm install
+```
 
-3. **Try the Demo**
-   - Connect your wallet using a local Passkey.
-   - Use the **Session Info** card to grab some Devnet SOL from the airdrop.
-   - Try the **Batch Transfer** to send to multiple addresses at once.
-   - Scan the **QR Code** to receive funds from mobile wallets.
+### 2. Install LazorKit SDK (for your own project)
+
+```bash
+npm install @lazorkit/wallet @solana/web3.js
+```
+
+### 3. Environment Setup
+
+Create a `.env.local` file (optional, defaults work for Devnet):
+
+```env
+# Solana RPC URL (defaults to Devnet)
+NEXT_PUBLIC_RPC_URL=https://api.devnet.solana.com
+
+# LazorKit Portal (for passkey authentication)
+NEXT_PUBLIC_LAZOR_PORTAL_URL=https://portal.lazor.sh
+```
+
+### 4. Run Dev Server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 5. Try the Demo
+
+- Connect your wallet using a local Passkey (FaceID/TouchID/Windows Hello)
+- Use the **Session Info** card to grab some Devnet SOL from the airdrop
+- Try the **Batch Transfer** to send to multiple addresses at once
+- Scan the **QR Code** to receive funds from mobile wallets
+
+---
+
+## Tutorials
+
+Step-by-step guides for integrating LazorKit:
+
+| Tutorial | Description |
+|----------|-------------|
+| [Passkey Login](./docs/TUTORIAL_PASSKEY_LOGIN.md) | How to add passkey-based wallet authentication |
+| [Gasless Transactions](./docs/TUTORIAL_GASLESS_TX.md) | How to send SOL/tokens without gas fees |
 
 ---
 
