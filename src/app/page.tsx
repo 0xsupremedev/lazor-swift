@@ -11,6 +11,7 @@ import { ActivityFeed } from '@/components/ActivityFeed';
 import { RequestPayment } from '@/components/RequestPayment';
 import { BatchTransfer } from '@/components/BatchTransfer';
 import { Zap } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -145,7 +146,7 @@ export default function Home() {
             </div>
             <p className="text-gray-500 text-sm">Built for the LazorKit Bounty by 0xsupremedev</p>
             <div className="mt-8 flex justify-center gap-6">
-              <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">Documentation</a>
+              <Link href="/docs" className="text-gray-400 hover:text-gray-600 transition-colors">Documentation</Link>
               <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">GitHub</a>
               <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">Twitter</a>
             </div>
