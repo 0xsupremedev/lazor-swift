@@ -11,6 +11,7 @@ import { ActivityFeed } from '@/components/ActivityFeed';
 import { RequestPayment } from '@/components/RequestPayment';
 import { BatchTransfer } from '@/components/BatchTransfer';
 import { PasskeySettings } from '@/components/PasskeySettings';
+import { SwapInterface } from '@/components/SwapInterface';
 import { Zap } from 'lucide-react';
 import Link from 'next/link';
 
@@ -108,6 +109,11 @@ export default function Home() {
                       <BatchTransfer />
                     </div>
                   </div>
+                </div>
+
+                {/* Swap Interface */}
+                <div className="p-1 shadow-2xl bg-gradient-to-bl from-pink-500/10 via-indigo-500/10 to-transparent rounded-[40px]">
+                  <SwapInterface />
                 </div>
 
                 {/* Activity Feed */}

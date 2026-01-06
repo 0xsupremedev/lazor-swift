@@ -131,6 +131,7 @@ Step-by-step guides for integrating LazorKit:
 |----------|-------------|
 | [Passkey Login](./docs/TUTORIAL_PASSKEY_LOGIN.md) | How to add passkey-based wallet authentication |
 | [Gasless Transactions](./docs/TUTORIAL_GASLESS_TX.md) | How to send SOL/tokens without gas fees |
+| [Session Persistence](./docs/TUTORIAL_SESSION_PERSISTENCE.md) | How to handle multi-device sync and reloads |
 
 ---
 

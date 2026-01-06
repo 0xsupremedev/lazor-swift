@@ -12,6 +12,7 @@ export function SessionInfo() {
     const [balance, setBalance] = useState<number | null>(null);
     const [usdcBalance, setUsdcBalance] = useState<number | null>(null);
     const [airdropStatus, setAirdropStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [copied, setCopied] = useState(false);
 
     const fetchBalance = useCallback(async () => {
         if (!smartWalletPubkey) return;
@@ -112,6 +113,13 @@ export function SessionInfo() {
         }
     };
 
+    const copyAddress = () => {
+        if (!smartWalletPubkey) return;
+        navigator.clipboard.writeText(smartWalletPubkey.toBase58());
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
     if (!isConnected || !smartWalletPubkey) return null;
 
     return (
@@ -122,9 +130,16 @@ export function SessionInfo() {
                 </div>
                 <div>
                     <p className="text-xs text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider">Smart Account</p>
-                    <p className="text-sm font-mono text-gray-700 dark:text-gray-300">
-                        {smartWalletPubkey.toBase58().slice(0, 4)}...{smartWalletPubkey.toBase58().slice(-4)}
-                    </p>
+                    <button
+                        onClick={copyAddress}
+                        title="Click to copy full address"
+                        className="group flex items-center gap-2 text-sm font-mono text-gray-700 dark:text-gray-300 hover:text-indigo-600 transition-colors"
+                    >
+                        {smartWalletPubkey.toBase58().slice(0, 8)}...{smartWalletPubkey.toBase58().slice(-8)}
+                        <span className="text-[10px] bg-gray-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                            {copied ? 'Copied!' : 'Copy'}
+                        </span>
+                    </button>
                 </div>
             </div>
 
