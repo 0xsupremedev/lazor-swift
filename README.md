@@ -36,6 +36,11 @@ Built for the **LazorKit Bounty**, LazorSwift demonstrates a premium, high-conve
 
 ---
 
+
+https://github.com/user-attachments/assets/dfa84c0e-c650-4365-bf04-79bbf06dd837
+
+
+
 ## Architecture
 
 LazorSwift leverages **Account Abstraction** to decouple the signer (Passkey) from the account (Smart Wallet).
