@@ -21,7 +21,18 @@ export function SecuritySection() {
                         </div>
                         <h4 className="text-xl font-bold mb-3">Hardware-Bound</h4>
                         <p className="text-gray-500 text-sm leading-relaxed">
-                            Private keys never leave your device's Secure Enclave. Biometric auth (FaceID/TouchID) ensures only you can sign transactions.
+                            Private keys never leave your device's Secure Enclave. Biometric auth (FaceID/TouchID/Windows Hello) ensures only you can sign transactions.
+                        </p>
+                    </div>
+
+                    {/* Multi-Device Sync */}
+                    <div className="p-8 bg-white dark:bg-black rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-6">
+                            <Lock size={28} />
+                        </div>
+                        <h4 className="text-xl font-bold mb-3">Cross-Device Sync</h4>
+                        <p className="text-gray-500 text-sm leading-relaxed">
+                            LazorKit supports multi-device registration. Add your Windows PC, iPhone, or hardware key to the same Smart Account for maximum redundancy.
                         </p>
                     </div>
 
@@ -32,18 +43,7 @@ export function SecuritySection() {
                         </div>
                         <h4 className="text-xl font-bold mb-3">Phishing Resistant</h4>
                         <p className="text-gray-500 text-sm leading-relaxed">
-                            Unlike seed phrases, Passkeys are bound to the domain. An attacker can't trick you into entering them on a fake site.
-                        </p>
-                    </div>
-
-                    {/* Smart Account Control */}
-                    <div className="p-8 bg-white dark:bg-black rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="w-12 h-12 bg-pink-50 dark:bg-pink-900/30 rounded-2xl flex items-center justify-center text-pink-600 dark:text-pink-400 mb-6">
-                            <Lock size={28} />
-                        </div>
-                        <h4 className="text-xl font-bold mb-3">Smart Account Control</h4>
-                        <p className="text-gray-500 text-sm leading-relaxed">
-                            Your Passkey controls a PDA-based Smart Account (AA), enabling gas sponsorship and granular permission management.
+                            Unlike seed phrases, Passkeys are domain-bound. An attacker can't trick you into entering them on a fake site.
                         </p>
                     </div>
                 </div>

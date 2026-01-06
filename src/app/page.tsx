@@ -10,6 +10,7 @@ import { SecuritySection } from '@/components/SecuritySection';
 import { ActivityFeed } from '@/components/ActivityFeed';
 import { RequestPayment } from '@/components/RequestPayment';
 import { BatchTransfer } from '@/components/BatchTransfer';
+import { PasskeySettings } from '@/components/PasskeySettings';
 import { Zap } from 'lucide-react';
 import Link from 'next/link';
 
@@ -64,7 +65,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { step: "01", title: "Create Wallet", desc: "User signs up using FaceID or TouchID. A secure Passkey is created locally." },
+                { step: "01", title: "Create Wallet", desc: "User signs up using FaceID, TouchID, or Windows Hello. A secure Passkey is created locally." },
                 { step: "02", title: "Deploy Smart Account", desc: "A PDA-based Smart Account is deployed on Solana, controlled by the Passkey." },
                 { step: "03", title: "Transact Gasless", desc: "Transactions are signed with Passkeys and sponsored by the Lazor Paymaster." }
               ].map((item, i) => (
@@ -128,8 +129,9 @@ export default function Home() {
                   </div>
 
                   {/* Request Payment Utility */}
-                  <div className="pt-8 border-t border-gray-200 dark:border-zinc-800">
+                  <div className="pt-8 border-t border-gray-200 dark:border-zinc-800 space-y-8">
                     <RequestPayment />
+                    <PasskeySettings />
                   </div>
                 </div>
               </div>
