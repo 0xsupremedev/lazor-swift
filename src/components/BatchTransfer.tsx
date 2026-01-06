@@ -37,16 +37,32 @@ export function BatchTransfer() {
             setLoading(true);
             const instructions: TransactionInstruction[] = [];
 
-            recipients.forEach((r) => {
-                if (!r.address || !r.amount) return;
+            for (const r of recipients) {
+                if (!r.address || !r.amount) continue;
+
+                let destination: PublicKey;
+                try {
+                    destination = new PublicKey(r.address.trim());
+                    if (!PublicKey.isOnCurve(destination.toBuffer())) {
+                        throw new Error(`Invalid address for recipient: ${r.address}`);
+                    }
+                } catch (e) {
+                    throw new Error(`Invalid receiver address: ${r.address}`);
+                }
+
+                const parsedAmount = parseFloat(r.amount);
+                if (isNaN(parsedAmount) || parsedAmount <= 0) {
+                    throw new Error(`Invalid amount for ${r.address}: ${r.amount}`);
+                }
+
                 instructions.push(
                     SystemProgram.transfer({
                         fromPubkey: smartWalletPubkey,
-                        toPubkey: new PublicKey(r.address),
-                        lamports: parseFloat(r.amount) * LAMPORTS_PER_SOL,
+                        toPubkey: destination,
+                        lamports: parsedAmount * LAMPORTS_PER_SOL,
                     })
                 );
-            });
+            }
 
             if (instructions.length === 0) {
                 toast.error('Please add at least one valid recipient');

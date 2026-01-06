@@ -18,8 +18,23 @@ export function TransferSOL() {
         try {
             setStatus('sending');
 
-            const destination = new PublicKey(recipient);
-            const lamports = parseFloat(amount) * LAMPORTS_PER_SOL;
+            // --- Validation Start ---
+            let destination: PublicKey;
+            try {
+                destination = new PublicKey(recipient.trim());
+                if (!PublicKey.isOnCurve(destination.toBuffer())) {
+                    throw new Error('Invalid recipient address');
+                }
+            } catch (e) {
+                throw new Error('Please enter a valid Solana address');
+            }
+
+            const parsedAmount = parseFloat(amount);
+            if (isNaN(parsedAmount) || parsedAmount <= 0) {
+                throw new Error('Please enter a valid amount greater than 0');
+            }
+            const lamports = parsedAmount * LAMPORTS_PER_SOL;
+            // --- Validation End ---
 
             const instruction = SystemProgram.transfer({
                 fromPubkey: smartWalletPubkey,

@@ -25,7 +25,21 @@ export function PaymentWidget({ recipient, defaultAmount = 0.05, title = "Pay wi
 
         try {
             setLoading(true);
-            const destination = new PublicKey(recipient);
+
+            let destination: PublicKey;
+            try {
+                destination = new PublicKey(recipient.trim());
+                if (!PublicKey.isOnCurve(destination.toBuffer())) {
+                    throw new Error('Invalid merchant address');
+                }
+            } catch (e) {
+                throw new Error('Merchant address is invalid');
+            }
+
+            if (isNaN(defaultAmount) || defaultAmount <= 0) {
+                throw new Error('Invalid payment amount');
+            }
+
             const instruction = SystemProgram.transfer({
                 fromPubkey: smartWalletPubkey!,
                 toPubkey: destination,

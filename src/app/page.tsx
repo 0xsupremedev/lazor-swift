@@ -46,7 +46,7 @@ export default function Home() {
               <a href="#demo" className="px-10 py-4 bg-indigo-600 text-white rounded-full font-bold text-lg hover:bg-indigo-700 hover:scale-105 transition-all shadow-lg shadow-indigo-500/20">
                 Try Live Demo
               </a>
-              <a href="https://github.com/0xsupremedev/lazor-swift" target="_blank" className="px-10 py-4 bg-gray-100 dark:bg-zinc-900 rounded-full font-bold text-lg hover:bg-gray-200 dark:hover:bg-zinc-800 transition-all border border-gray-200 dark:border-zinc-800">
+              <a href="https://github.com/0xsupremedev/lazor-swift" target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-gray-100 dark:bg-zinc-900 rounded-full font-bold text-lg hover:bg-gray-200 dark:hover:bg-zinc-800 transition-all border border-gray-200 dark:border-zinc-800">
                 View Source
               </a>
             </div>

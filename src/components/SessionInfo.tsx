@@ -28,13 +28,12 @@ export function SessionInfo() {
                 })
             });
             const data = await response.json();
+            if (data.error) throw new Error(data.error.message);
             if (data.result) {
                 setBalance(data.result.value / LAMPORTS_PER_SOL);
             }
 
             // Fetch USDC Balance
-            // Note: In a real app, use a dedicated RPC provider or Connection object
-            // Here we use a direct RPC call for getTokenAccountBalance
             const usdcMint = new PublicKey(CONFIG.USDC_MINT);
             const ata = await getAssociatedTokenAddress(usdcMint, smartWalletPubkey, true);
 
@@ -44,15 +43,32 @@ export function SessionInfo() {
                 body: JSON.stringify({
                     jsonrpc: '2.0',
                     id: 2,
-                    method: 'getTokenAccountBalance',
-                    params: [ata.toBase58()]
+                    method: 'getAccountInfo',
+                    params: [
+                        ata.toBase58(),
+                        { encoding: 'jsonParsed' }
+                    ]
                 })
             });
-            const tokenData = await tokenResponse.json();
-            if (tokenData.result) {
-                setUsdcBalance(tokenData.result.value.uiAmount);
+            const tokenAccountInfo = await tokenResponse.json();
+
+            if (tokenAccountInfo.result && tokenAccountInfo.result.value) {
+                const balanceResponse = await fetch(CONFIG.RPC_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        jsonrpc: '2.0',
+                        id: 3,
+                        method: 'getTokenAccountBalance',
+                        params: [ata.toBase58()]
+                    })
+                });
+                const balanceData = await balanceResponse.json();
+                if (balanceData.result) {
+                    setUsdcBalance(balanceData.result.value.uiAmount);
+                }
             } else {
-                setUsdcBalance(0); // Likely no ATA exists yet
+                setUsdcBalance(0);
             }
 
         } catch (e) {
