@@ -22,9 +22,23 @@ export function TransferUSDC() {
         try {
             setStatus('sending');
 
-            const destinationPubkey = new PublicKey(recipient);
+            let destinationPubkey: PublicKey;
+            try {
+                destinationPubkey = new PublicKey(recipient.trim());
+                if (!PublicKey.isOnCurve(destinationPubkey.toBuffer())) {
+                    throw new Error('Invalid Solana address');
+                }
+            } catch (e) {
+                throw new Error('Please enter a valid Solana address');
+            }
+
+            const parsedAmount = parseFloat(amount);
+            if (isNaN(parsedAmount) || parsedAmount <= 0) {
+                throw new Error('Please enter a valid amount greater than 0');
+            }
+
             const mintPubkey = USDC_MINT;
-            const transferAmount = parseFloat(amount) * 1_000_000; // 6 decimals for USDC
+            const transferAmount = parsedAmount * 1_000_000; // 6 decimals for USDC
 
             // 1. Get/Create Associated Token Accounts
             // Note: In a real app, you'd check if these exist first or use an instruction that creates them if needed.

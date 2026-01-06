@@ -34,6 +34,8 @@ export function ActivityFeed() {
             });
             const data = await response.json();
 
+            if (data.error) throw new Error(data.error.message);
+
             if (data.result) {
                 const mapped: Transaction[] = data.result.map((tx: { signature: string; slot: number; blockTime: number | null; err: unknown }) => ({
                     signature: tx.signature,
