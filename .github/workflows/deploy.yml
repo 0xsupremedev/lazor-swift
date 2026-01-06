@@ -14,6 +14,8 @@ on:
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
       - name: Deploy to Vercel
         run: npx vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
         env:
